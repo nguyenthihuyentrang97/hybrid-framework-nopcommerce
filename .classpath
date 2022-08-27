@@ -14,6 +14,5 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="libraries/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="lib" path="libraries/testng-6.14.3.jar"/>
-	<classpathentry kind="lib" path="browserDriver/chromedriver.exe"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
