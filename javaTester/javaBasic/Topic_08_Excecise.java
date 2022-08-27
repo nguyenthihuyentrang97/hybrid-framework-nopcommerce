@@ -144,8 +144,7 @@ public class Topic_08_Excecise {
 			
 			for (int i = 1; i <= n; i++) {
 				
-				giaithua = giaithua * i;
-				
+				giaithua = giaithua * i;			
 			}
 			
 			System.out.println("giai thừa của " + n + " là " + giaithua);
