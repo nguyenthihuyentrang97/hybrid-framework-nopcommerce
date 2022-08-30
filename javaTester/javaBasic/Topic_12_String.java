@@ -1,9 +1,18 @@
 package javaBasic;
 
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 public class Topic_12_String {
 
 	public static void main(String[] args) {
 
+//		System.setProperty("webdriver.gecko.driver", ".\\browserDrivers\\geckodriver.exe");
+//		
+//		WebDriver driver = new FirefoxDriver();
+		
+		
 		String s1 = "Cat";
 
 		s1 = "Dog";
@@ -79,13 +88,93 @@ public class Topic_12_String {
 
 		// replace - Thay thế 1 chuỗi / kí tự bằng chuỗi / kí tự khác
 
-		String productPice = "$1000";
+		String productPrice = "$1000";
 
-		productPice = productPice.replace("$", ""); // Thay thế kí tự bằng 1 kí tự khác
+		productPrice = productPrice.replace("$", ""); // Thay thế kí tự bằng 1 kí tự khác
+		
 
-		float productPiceF = Float.parseFloat(productPice); // convege String sang float
+		// Sắp xếp nó: Sort Data (Asc/ Desc)
+		float productPiceF = Float.parseFloat(productPrice); // convert float sang string
 
-		String.valueOf(productPiceF); // convege từ float sang String
+		String.valueOf(productPiceF); 
+		
+		productPrice = String.valueOf(productPiceF); 
+		
+		int productPriceI = Integer.parseInt(productPrice); // convert từ int sang string
+		
+		
 
-	}
+//		// split and Substring
+//		
+//		String text = "Viewing 72 of 1879 results";
+//		
+//		String[] subString = text.split(" ");
+//		
+//		for(int i =0; i<subString.length; i++) {
+//			
+//			System.out.println("Vi tri thu " + i + ":" + subString[i]);
+//		}
+//		
+//		System.out.println(extractNumberFromString(text, 1));
+//		System.out.println(extractNumberFromString(text, 3));
+//		
+//		public static int extractNumberFromString(String text, int number) {
+//			
+//			String[] subString = text.split(" ");
+//			
+//			int result = Integer.parseInt(subString[number]); // từ String chuyển sang int
+//			
+//			return result;
+//		}
+//
+//	}
+		
+		
+		// Upper / Lower Case
+		
+		String osName = System.getProperty("os.name");
+		
+		System.out.println(osName);
+		// Handle multiple OS: MAC/ windows ( Action - keys - Ctrl / Command)
+		
+		if(osName.toLowerCase().contains("windows")) {
+			
+			Keys key = Keys.CONTROL;
+		} else {
+			
+			Keys key = Keys.COMMAND; 
+		}
+		
+		// Multiple browser:UpperCase
+		// firefox = FIREFOX
+		
+//		String driverInstanceName = driver.toString();
+		
+//		System.out.println(driverInstanceName);
+//		
+//		if (driverInstanceName.contains("internetexplorer")) {
+			// Sleep cứng thêm 5s sau mỗi lần chuyển page
+			
+		
+		
+		
+		// Trim
+		String helloWord = "         "
+				+ "Hello World!          ";
+		System.out.println(helloWord.trim());
+			
+		
+		// Convert int - string hoặc double - string  
+		
+		// Dynamic locator
+		// Đại diện cho 1 chuỗi: %s
+		
+		String dynamicButonXpath = "//button[@id='%s']";
+		
+		System.out.println("Click to Login button = " + dynamicButonXpath.format(dynamicButonXpath, "login"));
+		
+		}
+
+		
+
 }
