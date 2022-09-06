@@ -17,6 +17,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
+	public static BasePage getBasePageObject() {
+
+		return new BasePage();
+	}
+
 	public void openPageUrl(WebDriver driver, String pageUrl) {
 
 		driver.get(pageUrl);
@@ -96,7 +101,7 @@ public class BasePage {
 		}
 	}
 
-	public By getByXpath(String xpathLocator) {
+	private By getByXpath(String xpathLocator) {
 
 		By by = By.xpath(xpathLocator);
 		return by;
@@ -138,12 +143,12 @@ public class BasePage {
 		driver.switchTo().window(parentID);
 	}
 
-	public WebElement getWebElement(WebDriver driver, String xpathLocator) {
+	private WebElement getWebElement(WebDriver driver, String xpathLocator) {
 
 		return driver.findElement(getByXpath(xpathLocator));
 	}
 
-	public List<WebElement> getListWebElement(WebDriver driver, String xpathLocator) {
+	private List<WebElement> getListWebElement(WebDriver driver, String xpathLocator) {
 
 		return driver.findElements(getByXpath(xpathLocator));
 
@@ -186,7 +191,8 @@ public class BasePage {
 		return select.isMultiple();
 	}
 
-	public void selectItemInCustomDropdown(WebDriver driver, String parentXpathLocator, String childXpathLocator, String textExpectedItem) {
+	public void selectItemInCustomDropdown(WebDriver driver, String parentXpathLocator, String childXpathLocator,
+			String textExpectedItem) {
 
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeOut);
 
@@ -194,7 +200,8 @@ public class BasePage {
 
 		sleepInSecond(1);
 
-		List<WebElement> allItem = explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childXpathLocator)));
+		List<WebElement> allItem = explicitWait
+				.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childXpathLocator)));
 
 		for (WebElement item : allItem) {
 
@@ -322,11 +329,13 @@ public class BasePage {
 
 		String originalStyle = element.getAttribute("style");
 
-		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", "border: 2px solid red; border-style: dashed;");
+		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style",
+				"border: 2px solid red; border-style: dashed;");
 
 		sleepInSecond(1);
 
-		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
+		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style",
+				originalStyle);
 
 	}
 
@@ -350,7 +359,8 @@ public class BasePage {
 
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-		jsExecutor.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", getWebElement(driver, xpathLocator));
+		jsExecutor.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');",
+				getWebElement(driver, xpathLocator));
 
 	}
 
@@ -393,7 +403,8 @@ public class BasePage {
 
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;", getWebElement(driver, xpathLocator));
+		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;",
+				getWebElement(driver, xpathLocator));
 
 	}
 
@@ -401,7 +412,9 @@ public class BasePage {
 
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-		boolean status = (boolean) jsExecutor.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", getWebElement(driver, xpathLocator));
+		boolean status = (boolean) jsExecutor.executeScript(
+				"return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0",
+				getWebElement(driver, xpathLocator));
 
 		if (status) {
 
@@ -449,6 +462,5 @@ public class BasePage {
 	}
 
 	private long longTimeOut = 30;
-	
 
 }
