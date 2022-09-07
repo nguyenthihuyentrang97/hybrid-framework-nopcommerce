@@ -7,7 +7,12 @@ import pageUIs.RegisterPageUI;
 
 public class RegisterPageObject extends BasePage {
 
-	WebDriver driver;
+	private WebDriver driver;
+
+	public RegisterPageObject(WebDriver driver) {
+
+		this.driver = driver;
+	}
 
 	public void clickToRegisterButton() {
 		waitForElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
@@ -56,7 +61,7 @@ public class RegisterPageObject extends BasePage {
 	public void inputToLastNameTextBox(String lastName) {
 		waitForElementVisible(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
 
-		senkeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, lastName);
+		senkeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, lastName);
 
 	}
 
@@ -77,7 +82,7 @@ public class RegisterPageObject extends BasePage {
 	public void inputToConfirmPasswordTextBox(String confirmPassWord) {
 		waitForElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
 
-		senkeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, confirmPassWord);
+		senkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassWord);
 
 	}
 
@@ -89,7 +94,7 @@ public class RegisterPageObject extends BasePage {
 
 	public void clickToLogoutLink() {
 		waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
-		
+
 		clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
 
 	}
