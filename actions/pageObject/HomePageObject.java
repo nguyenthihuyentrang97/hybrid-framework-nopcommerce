@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import pageUIs.HomePageUI;
+import pageUIs.LoginPageUI;
 
 public class HomePageObject extends BasePage {
 
@@ -18,6 +19,13 @@ public class HomePageObject extends BasePage {
 		waitForElementClickable(driver, HomePageUI.REGISTER_LINK);
 
 		clickToElement(driver, HomePageUI.REGISTER_LINK);
+
+	}
+
+	public void clickToLoginLink() {
+		waitForElementClickable(driver, LoginPageUI.LOGIN_LINK);
+
+		clickToElement(driver, LoginPageUI.LOGIN_LINK);
 
 	}
 

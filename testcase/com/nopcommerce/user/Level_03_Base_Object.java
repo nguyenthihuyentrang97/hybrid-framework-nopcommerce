@@ -189,6 +189,7 @@ public class Level_03_Base_Object {
 
 	public void afterClass() {
 
+		driver.quit();
 	}
 
 	public int generateFakeNumber() {
