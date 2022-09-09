@@ -16,7 +16,7 @@ import pageObject.RegisterPageObject;
 
 public class Level_04_Multiple_Browsers extends BaseTest {
 
-	private WebDriver driverTestClass;
+	private WebDriver driver;
 
 	private RegisterPageObject registerPage;
 
@@ -36,9 +36,9 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
 	public void beforeClass(String browserName) {
 
-		driverTestClass = getBrowserDriver(browserName);
+		driver = getBrowserDriver(browserName);
 
-		homePage = new HomePageObject(driverTestClass);
+		homePage = new HomePageObject(driver);
 
 		emailAddress = "abc" + generateFakeNumber() + "@mail.vn";
 
@@ -52,7 +52,7 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driverTestClass);
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_01 - Step 02: Click Register button");
 
@@ -80,7 +80,7 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driverTestClass);
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_02 - Step 02: Input required fields");
 
@@ -112,7 +112,7 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driverTestClass);
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_03 - Step 02: Input required fields");
 
@@ -148,7 +148,7 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driverTestClass);
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_04 - Step 02: Input required fields");
 
@@ -180,7 +180,7 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driverTestClass);
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_05 - Step 02: Input required fields");
 
@@ -213,7 +213,7 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driverTestClass);
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_06 - Step 02: Input required fields");
 
@@ -242,7 +242,7 @@ public class Level_04_Multiple_Browsers extends BaseTest {
 
 	public void afterClass() {
 
-		driverTestClass.quit();
+		driver.quit();
 	}
 
 	public int generateFakeNumber() {
