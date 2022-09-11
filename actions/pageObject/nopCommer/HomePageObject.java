@@ -1,10 +1,9 @@
-package pageObject;
+package pageObject.nopCommer;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.HomePageUI;
-import pageUIs.LoginPageUI;
+import pageUIs.nopCommer.HomePageUI;
 
 public class HomePageObject extends BasePage {
 
@@ -19,8 +18,8 @@ public class HomePageObject extends BasePage {
 		waitForElementClickable(driver, HomePageUI.REGISTER_LINK);
 
 		clickToElement(driver, HomePageUI.REGISTER_LINK);
-		
-		return new RegisterPageObject(driver);
+
+		return PageGeneratorManager.getRegisterPage(driver);
 
 	}
 
@@ -28,8 +27,8 @@ public class HomePageObject extends BasePage {
 		waitForElementClickable(driver, HomePageUI.LOGIN_LINK);
 
 		clickToElement(driver, HomePageUI.LOGIN_LINK);
-		
-		return new LoginPageObject(driver);
+
+		return PageGeneratorManager.getLoginPage(driver);
 
 	}
 
@@ -41,6 +40,13 @@ public class HomePageObject extends BasePage {
 	public boolean isLogoutLinkDisplay() {
 		waitForElementVisible(driver, HomePageUI.LOG_OUT_LINK);
 		return isElementDisplayed(driver, HomePageUI.LOG_OUT_LINK);
+	}
+
+	public CustomerPageObject clickToMyAccountLink() {
+		waitForElementClickable(driver, HomePageUI.MY_ACCOUNT_LINK);
+		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
+		return PageGeneratorManager.getCustomerPageObject(driver);
+
 	}
 
 }

@@ -1,9 +1,9 @@
-package pageObject;
+package pageObject.nopCommer;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.LoginPageUI;
+import pageUIs.nopCommer.LoginPageUI;
 
 public class LoginPageObject extends BasePage {
 
@@ -19,8 +19,8 @@ public class LoginPageObject extends BasePage {
 		waitForElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
 
 		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
-		
-		return new HomePageObject(driver);
+
+		return PageGeneratorManager.getHomePage(driver);
 
 	}
 
@@ -46,9 +46,8 @@ public class LoginPageObject extends BasePage {
 	}
 
 	public String getErrorMessageLogin() {
-		waitForElementVisible(driver, LoginPageUI.ERROR_LOGIN_MESSAGE );
-		return getElementText(driver, LoginPageUI.ERROR_LOGIN_MESSAGE );
+		waitForElementVisible(driver, LoginPageUI.ERROR_LOGIN_MESSAGE);
+		return getElementText(driver, LoginPageUI.ERROR_LOGIN_MESSAGE);
 	}
-
 
 }

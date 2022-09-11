@@ -21,7 +21,7 @@ public class BaseTest {
 		if (browserName.equals("firefox")) {
 
 			WebDriverManager.firefoxdriver().setup();
-			
+
 			driverBaseTest = new FirefoxDriver();
 
 		} else if (browserName.equals("h_firefox")) {
@@ -39,7 +39,7 @@ public class BaseTest {
 		} else if (browserName.equals("chrome")) {
 
 			WebDriverManager.chromedriver().setup();
-			
+
 			driverBaseTest = new ChromeDriver();
 
 		} else if (browserName.equals("h_chrome")) {
@@ -55,21 +55,21 @@ public class BaseTest {
 			driverBaseTest = new ChromeDriver(options);
 
 		} else if (browserName.equals("edge")) {
-			
+
 			WebDriverManager.edgedriver().setup();
 
 			driverBaseTest = new EdgeDriver();
-			
+
 		} else if (browserName.equals("coccoc")) {
-			
+
 			WebDriverManager.chromedriver().driverVersion("104.0.5112.20").setup();
-			
+
 			ChromeOptions options = new ChromeOptions();
-			
+
 			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
 
 			driverBaseTest = new ChromeDriver(options);
-			
+
 		} else {
 
 			throw new RuntimeException("Browser name invalid");
@@ -77,7 +77,7 @@ public class BaseTest {
 
 		driverBaseTest.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-		driverBaseTest.get("https://demo.nopcommerce.com/");
+		driverBaseTest.get("http://live.techpanda.org/index.php/");
 
 		return driverBaseTest;
 	}
@@ -87,6 +87,14 @@ public class BaseTest {
 		Random random = new Random();
 		return random.nextInt(99999);
 
+	}
+
+	public void sleepInSecond(long timeInSecond) {
+		try {
+			Thread.sleep(timeInSecond * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

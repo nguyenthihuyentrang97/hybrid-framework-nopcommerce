@@ -1,4 +1,4 @@
-package pageFactory;
+package pageFactory.nopCommer;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

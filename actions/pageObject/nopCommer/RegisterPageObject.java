@@ -1,9 +1,9 @@
-package pageObject;
+package pageObject.nopCommer;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.RegisterPageUI;
+import pageUIs.nopCommer.RegisterPageUI;
 
 public class RegisterPageObject extends BasePage {
 
@@ -96,8 +96,8 @@ public class RegisterPageObject extends BasePage {
 		waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
 
 		clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
-		
-		return new HomePageObject(driver);
+
+		return PageGeneratorManager.getHomePage(driver);
 
 	}
 

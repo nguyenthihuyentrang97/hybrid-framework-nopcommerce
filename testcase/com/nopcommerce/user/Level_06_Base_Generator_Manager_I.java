@@ -8,9 +8,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.HomePageObject;
-import pageObject.LoginPageObject;
-import pageObject.RegisterPageObject;
+import pageObject.nopCommer.HomePageObject;
+import pageObject.nopCommer.LoginPageObject;
+import pageObject.nopCommer.RegisterPageObject;
 
 public class Level_06_Base_Generator_Manager_I  extends BaseTest{
 

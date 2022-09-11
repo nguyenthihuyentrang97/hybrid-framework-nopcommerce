@@ -3,63 +3,55 @@ package com.nopcommerce.user;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import commons.BaseTest;
+import pageObject.nopCommer.CustomerPageObject;
 import pageObject.nopCommer.HomePageObject;
 import pageObject.nopCommer.LoginPageObject;
+import pageObject.nopCommer.PageGeneratorManager;
 import pageObject.nopCommer.RegisterPageObject;
 
-public class Level_03_Base_Object_02_Login {
+public class Level_06_Base_Generator_Manager_III extends BaseTest {
 
 	private WebDriver driver;
 
-	HomePageObject homePage;
+	private HomePageObject homePage;
 
-	LoginPageObject loginPage;
+	private LoginPageObject loginPage;
 
-	RegisterPageObject registerPage;
+	private RegisterPageObject registerPage;
 
-	String projectPath = System.getProperty("user.dir");
+	private CustomerPageObject customerPage;
 
-	String firstName = "huyen";
+	private String firstName = "huyen";
 
-	String lastName = "trang";
+	private String lastName = "trang";
 
-	String validEmail= "abc" + fakeNumber() + "@gmail.vn";
-	
-	String notFoundEmail = "abc" + fakeNumber() + "@gmail.com";
-	
-	String incorrectEmail = "!@#$%^&*#$%";
+	private String validEmail = "abc" + fakeNumber() + "@gmail.vn";
 
-	String passWord = "123456";
+	private String notFoundEmail = "abc" + fakeNumber() + "@gmail.com";
+
+	private String incorrectEmail = "!@#$%^&*#$%";
+
+	private String passWord = "123456";
+
+	@Parameters("browser")
 
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClass(String browserName) {
 
-		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		driver = getBrowserDriver(browserName);
 
-		driver = new FirefoxDriver();
-
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
-		
-
-		driver.get("https://demo.nopcommerce.com");
-
-		homePage = new HomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 
 		System.out.println("Pre-Condition - Step 01: Click Register link");
 
-		homePage.clickToRegisterLink();
-
-		registerPage = new RegisterPageObject(driver);
+		registerPage = homePage.clickToRegisterLink(); // Page A = Page B.action
 
 		System.out.println("Pre-Condition - Step 02: Input required fields");
 
@@ -83,9 +75,7 @@ public class Level_03_Base_Object_02_Login {
 
 		System.out.println("Pre-Condition - Step 05: Click Logout button");
 
-		registerPage.clickToLogoutLink();
-
-		homePage = new HomePageObject(driver);
+		homePage = registerPage.clickToLogoutLink();
 
 	}
 
@@ -94,13 +84,11 @@ public class Level_03_Base_Object_02_Login {
 	public void Login_01_Empty_Data() {
 
 		System.out.println("Login_01 - Step 01: Click Login link");
-		
-		homePage.clickToLoginLink();
-		
-		loginPage = new LoginPageObject(driver);
+
+		loginPage = homePage.clickToLoginLink();
 
 		System.out.println("Login_01 - Step 02: Click button");
-		
+
 		loginPage.clickToLoginButton();
 
 		System.out.println("Login_01 - Step 03: Verify error message displayed");
@@ -108,14 +96,13 @@ public class Level_03_Base_Object_02_Login {
 		assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Please enter your email");
 
 	}
+
 	@Test
 	public void Login_02_Invalid_Email() {
 
 		System.out.println("Login_02 - Step 01: Click Login link");
 
-		homePage.clickToLoginLink();
-
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 
 		System.out.println("Login_02 - Step 02: Input required fields");
 
@@ -131,83 +118,75 @@ public class Level_03_Base_Object_02_Login {
 
 		assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Wrong email");
 	}
+
 	@Test
 	public void Login_03_Email_Incorrect() {
 
-		homePage.clickToLoginLink();
-
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 
 		loginPage.inputEmailTextBox(notFoundEmail);
-		
+
 		loginPage.inputPasswordTextBox(passWord);
 
 		loginPage.clickToLoginButton();
 
-		assertEquals(loginPage.getErrorMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
+		assertEquals(loginPage.getErrorMessageLogin(),
+				"Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
 
 	}
+
 	@Test
 	public void Login_04_Email_Existing_Password_Empty() {
 
-		homePage.clickToLoginLink();
-
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 
 		loginPage.inputEmailTextBox(validEmail);
-		
+
 		loginPage.clickToLoginButton();
 
-		assertEquals(loginPage.getErrorMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
-		
+		assertEquals(loginPage.getErrorMessageLogin(),
+				"Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+
 	}
+
 	@Test
 	public void Login_05_Email_Existing_Incorrect_Password() {
-		
-		homePage.clickToLoginLink();
 
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 
 		loginPage.inputEmailTextBox(validEmail);
-		
+
 		loginPage.inputPasswordTextBox("12345786");
 
 		loginPage.clickToLoginButton();
 
-		assertEquals(loginPage.getErrorMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+		assertEquals(loginPage.getErrorMessageLogin(),
+				"Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
 
 	}
+
 	@Test
 	public void Login_06_Valid_Email_Password() {
-		
-		homePage.clickToLoginLink();
 
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 
 		loginPage.inputEmailTextBox(validEmail);
-		
+
 		loginPage.inputPasswordTextBox(passWord);
 
-		loginPage.clickToLoginButton();
-		
-		homePage = new HomePageObject(driver);
-		
+		homePage = loginPage.clickToLoginButton();
+
 		assertTrue(homePage.isMyAccountLinkDisplay());
-		
-		assertTrue(homePage.isLogoutLinkDisplay());
-		
+
+		customerPage = homePage.clickToMyAccountLink();
+
 	}
 
 	@AfterClass
 
 	public void afterClass() {
 
+		driver.quit();
 	}
 
-	public int fakeNumber() {
-
-		Random random = new Random();
-		return random.nextInt(99999);
-
-	}
 }
