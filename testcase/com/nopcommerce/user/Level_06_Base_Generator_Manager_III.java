@@ -10,7 +10,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.nopCommer.CustomerPageObject;
+import pageObject.nopCommer.CustomerInfoPageObject;
 import pageObject.nopCommer.HomePageObject;
 import pageObject.nopCommer.LoginPageObject;
 import pageObject.nopCommer.PageGeneratorManager;
@@ -26,7 +26,7 @@ public class Level_06_Base_Generator_Manager_III extends BaseTest {
 
 	private RegisterPageObject registerPage;
 
-	private CustomerPageObject customerPage;
+	private CustomerInfoPageObject customerPage;
 
 	private String firstName = "huyen";
 

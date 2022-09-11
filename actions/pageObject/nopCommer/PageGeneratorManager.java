@@ -19,9 +19,24 @@ public class PageGeneratorManager {
 		return new RegisterPageObject(driver);
 	}
 
-	public static CustomerPageObject getCustomerPageObject(WebDriver driver) {
-		return new CustomerPageObject(driver);
+	public static AddressOject getAddressOject(WebDriver driver) {
+		return new AddressOject(driver);
 
+	}
+
+	public static RewardPointObject getRewardPointObject(WebDriver driver) {
+		return new RewardPointObject(driver);
+
+	}
+
+	public static MyProductReviewObject getMyProductReviewObject(WebDriver driver) {
+		return new MyProductReviewObject(driver);
+
+	}
+
+	public static CustomerInfoPageObject getCustomerPageObject(WebDriver driver) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
