@@ -12,10 +12,6 @@ public class MyProductReviewObject extends BasePage {
 		this.driver = driver;
 	}
 
-	public RewardPointObject clickToRewardPointLink() {
-		waitForElementVisible(driver, RewardPointPageUI.REWARD_POINTS);
-		clickToElement(driver, RewardPointPageUI.REWARD_POINTS);
-		return PageGeneratorManager.getRewardPointObject(driver);
-	}
+	
 
 }

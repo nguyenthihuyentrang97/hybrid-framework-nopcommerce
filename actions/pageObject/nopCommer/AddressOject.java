@@ -13,16 +13,4 @@ public class AddressOject extends BasePage {
 		this.driver = driver;
 	}
 
-	public MyProductReviewObject clickToMyProductReviewLink() {
-		waitForElementVisible(driver, AddressPageUI.MY_PRODUCT_REVIEW_LINK);
-		clickToElement(driver, AddressPageUI.MY_PRODUCT_REVIEW_LINK);
-		return PageGeneratorManager.getMyProductReviewObject(driver);
-	}
-
-	public RewardPointObject clickToRewardPointLink() {
-		waitForElementVisible(driver, RewardPointPageUI.REWARD_POINTS);
-		clickToElement(driver, RewardPointPageUI.REWARD_POINTS);
-		return PageGeneratorManager.getRewardPointObject(driver);
-	}
-
 }

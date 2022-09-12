@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import pageObject.nopCommer.AddressOject;
+import pageObject.nopCommer.ChangePasswordPageObject;
 import pageObject.nopCommer.CustomerInfoPageObject;
 import pageObject.nopCommer.HomePageObject;
 import pageObject.nopCommer.LoginPageObject;
@@ -36,6 +37,8 @@ public class Level_07_Switch_Page extends BaseTest {
 	private RewardPointObject rewardPointPage;
 
 	private MyProductReviewObject myProductReviewPage;
+	
+	private ChangePasswordPageObject changePasswordPage;
 
 	private String firstName = "huyen";
 
@@ -106,23 +109,30 @@ public class Level_07_Switch_Page extends BaseTest {
 	@Test
 	public void User_04_Switch_Page() {
 
-		addressPage = customerInfoPage.clickToAddressLink();
+		addressPage = customerInfoPage.clickToAddressLink(driver);
 		// Customer info -> Address
 
-		myProductReviewPage = addressPage.clickToMyProductReviewLink();
+		myProductReviewPage = addressPage.clickToMyProductReviewLink(driver);
 		// Address -> My Product Review
 
-		rewardPointPage = myProductReviewPage.clickToRewardPointLink();
+		rewardPointPage = myProductReviewPage.clickToRewardPointLink(driver);
 		// My Product Review -> Reward Point
 
-		addressPage = rewardPointPage.clickToAddressLink();
+		addressPage = rewardPointPage.clickToAddressLink(driver);
 		// Reward point -> Address
 
-		rewardPointPage = addressPage.clickToRewardPointLink();
+		rewardPointPage = addressPage.clickToRewardPointLink(driver);
 		// Address -> Reward point
 
-		myProductReviewPage = rewardPointPage.clickToMyProductReviewLink();
+		myProductReviewPage = rewardPointPage.clickToMyProductReviewLink(driver);
 		// Reward point -> My Product review
+		
+		changePasswordPage = myProductReviewPage.clickToChangePasswordLink(driver);
+		
+		myProductReviewPage = rewardPointPage.clickToMyProductReviewLink(driver);
+		
+		rewardPointPage = customerInfoPage.clickToRewardPointLink(driver);
+		
 	}
 
 	@Test

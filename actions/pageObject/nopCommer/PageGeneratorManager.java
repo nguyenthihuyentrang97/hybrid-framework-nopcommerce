@@ -35,8 +35,27 @@ public class PageGeneratorManager {
 	}
 
 	public static CustomerInfoPageObject getCustomerPageObject(WebDriver driver) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return new CustomerInfoPageObject(driver);
 	}
 
+	public static DownloadPageObject getDownloadPageObject(WebDriver driver) {
+
+		return new DownloadPageObject(driver);
+	}
+
+	public static BackInStockPageObject geBackInStockPageObject(WebDriver driver) {
+
+		return new BackInStockPageObject(driver);
+	}
+
+	public static ChangePasswordPageObject getChangePasswordPageObject(WebDriver driver) {
+
+		return new ChangePasswordPageObject(driver);
+	}
+
+	public static OrderPageObject getOrderPageObject(WebDriver driver) {
+
+		return new OrderPageObject(driver);
+	}
 }
