@@ -10,36 +10,37 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.nopCommer.AddressPageOject;
-import pageObject.nopCommer.ChangePasswordPageObject;
-import pageObject.nopCommer.CustomerInfoPageObject;
-import pageObject.nopCommer.HomePageObject;
-import pageObject.nopCommer.LoginPageObject;
-import pageObject.nopCommer.MyProductReviewObject;
-import pageObject.nopCommer.PageGeneratorManager;
-import pageObject.nopCommer.RegisterPageObject;
-import pageObject.nopCommer.RewardPointObject;
+import commons.PageGeneratorManager;
+import pageObjects.NopCommerce.admin.AdminLoginPageObject;
+import pageObjects.nopCommerceportal.portal.UserAddressPageOject;
+import pageObjects.nopCommerceportal.portal.UserChangePasswordPageObject;
+import pageObjects.nopCommerceportal.portal.UserCustomerInfoPageObject;
+import pageObjects.nopCommerceportal.portal.UserHomePageObject;
+import pageObjects.nopCommerceportal.portal.UserLoginPageObject;
+import pageObjects.nopCommerceportal.portal.UserMyProductReviewObject;
+import pageObjects.nopCommerceportal.portal.UserRegisterPageObject;
+import pageObjects.nopCommerceportal.portal.UserRewardPointObject;
 
 public class Level_07_Switch_Page extends BaseTest {
 
 	private WebDriver driver;
 
-	private HomePageObject homePage;
+	private UserHomePageObject userHomePage;
 
-	private LoginPageObject loginPage;
+	private UserLoginPageObject userLoginPage;
 
-	private RegisterPageObject registerPage;
+	private UserRegisterPageObject userRegisterPage;
 
-	private CustomerInfoPageObject customerInfoPage;
+	private UserCustomerInfoPageObject userCustomerInfoPage;
 
-	private AddressPageOject addressPage;
+	private UserAddressPageOject userAddressPage;
 
-	private RewardPointObject rewardPointPage;
+	private UserRewardPointObject userRewardPointPage;
 
-	private MyProductReviewObject myProductReviewPage;
+	private UserMyProductReviewObject userMyProductReviewPage;
 	
-	private ChangePasswordPageObject changePasswordPage;
-
+	private UserChangePasswordPageObject userChangePasswordPage;
+	
 	private String firstName = "huyen";
 
 	private String lastName = "trang";
@@ -55,7 +56,7 @@ public class Level_07_Switch_Page extends BaseTest {
 
 		driver = getBrowserDriver(browserName);
 
-		homePage = PageGeneratorManager.getHomePage(driver);
+		userHomePage = PageGeneratorManager.getUserHomePage(driver);
 
 	}
 
@@ -63,83 +64,78 @@ public class Level_07_Switch_Page extends BaseTest {
 
 	public void User_01_Register() {
 
-		registerPage = homePage.clickToRegisterLink(); // Page A = Page B.action
+		userRegisterPage = userHomePage.clickToRegisterLink(); // Page A = Page B.action
 
-		registerPage.inputToFristNameTextBox(firstName);
+		userRegisterPage.inputToFristNameTextBox(firstName);
 
-		registerPage.inputToLastNameTextBox(lastName);
+		userRegisterPage.inputToLastNameTextBox(lastName);
 
-		registerPage.inputToEmailTextBox(email);
+		userRegisterPage.inputToEmailTextBox(email);
 
-		registerPage.inputToPasswordTextBox(passWord);
+		userRegisterPage.inputToPasswordTextBox(passWord);
 
-		registerPage.inputToConfirmPasswordTextBox(passWord);
+		userRegisterPage.inputToConfirmPasswordTextBox(passWord);
 
-		registerPage.clickToRegisterButton();
+		userRegisterPage.clickToRegisterButton();
 
-		assertEquals(registerPage.getSuccessMessage(), "Your registration completed");
+		assertEquals(userRegisterPage.getSuccessMessage(), "Your registration completed");
 
-		homePage = registerPage.clickToLogoutLink();
+		userHomePage = userRegisterPage.clickToLogoutLinkAtUser(driver);
 
 	}
 
 	@Test
 	public void User_02_Login() {
 
-		loginPage = homePage.clickToLoginLink();
+		userLoginPage = userHomePage.clickToLoginLink();
 
-		loginPage.inputEmailTextBox(email);
+		userLoginPage.inputEmailTextBox(email);
 
-		loginPage.inputPasswordTextBox(passWord);
+		userLoginPage.inputPasswordTextBox(passWord);
 
-		homePage = loginPage.clickToLoginButton();
+		userHomePage = userLoginPage.clickToLoginButton();
 
-		assertTrue(homePage.isMyAccountLinkDisplay());
+		assertTrue(userHomePage.isMyAccountLinkDisplay());
 
 	}
 
 	@Test
 	public void User_03_Customer_Info() {
 
-		customerInfoPage = homePage.clickToMyAccountLink();
+		userCustomerInfoPage = userHomePage.clickToMyAccountLink(driver);
 
-		assertTrue(customerInfoPage.isCustomerInfoPageDisplayed());
+		assertTrue(userCustomerInfoPage.isCustomerInfoPageDisplayed());
 	}
 
 	@Test
 	public void User_04_Switch_Page() {
 
-		addressPage = customerInfoPage.clickToAddressLink(driver);
+		userAddressPage = userCustomerInfoPage.clickToAddressLink(driver);
 		// Customer info -> Address
 
-		myProductReviewPage = addressPage.clickToMyProductReviewLink(driver);
+		userMyProductReviewPage = userAddressPage.clickToMyProductReviewLink(driver);
 		// Address -> My Product Review
 
-		rewardPointPage = myProductReviewPage.clickToRewardPointLink(driver);
+		userRewardPointPage = userMyProductReviewPage.clickToRewardPointLink(driver);
 		// My Product Review -> Reward Point
 
-		addressPage = rewardPointPage.clickToAddressLink(driver);
+		userAddressPage = userRewardPointPage.clickToAddressLink(driver);
 		// Reward point -> Address
 
-		rewardPointPage = addressPage.clickToRewardPointLink(driver);
+		userRewardPointPage = userAddressPage.clickToRewardPointLink(driver);
 		// Address -> Reward point
 
-		myProductReviewPage = rewardPointPage.clickToMyProductReviewLink(driver);
+		userMyProductReviewPage = userRewardPointPage.clickToMyProductReviewLink(driver);
 		// Reward point -> My Product review
 		
-		changePasswordPage = myProductReviewPage.clickToChangePasswordLink(driver);
+		userChangePasswordPage = userMyProductReviewPage.clickToChangePasswordLink(driver);
 		
-		myProductReviewPage = rewardPointPage.clickToMyProductReviewLink(driver);
+		userMyProductReviewPage = userRewardPointPage.clickToMyProductReviewLink(driver);
 		
-		rewardPointPage = customerInfoPage.clickToRewardPointLink(driver);
+		userRewardPointPage = userCustomerInfoPage.clickToRewardPointLink(driver);
 		
 	}
 
-	@Test
-	public void User_05_Switch_Role() {
-
-//		Role user -> role admin, role admin -> role user
-	}
 
 	@AfterClass
 
