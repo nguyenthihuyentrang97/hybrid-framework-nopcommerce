@@ -33,7 +33,6 @@ import pageObjects.nopCommerceportal.portal.UserOrderPageObject;
 import pageObjects.nopCommerceportal.portal.UserRewardPointObject;
 import pageUIs.nopCommerce.User.BasePageUI;
 import pageUIs.nopCommerce.User.HomePageUI;
-import pageUIs.nopCommerce.User.RegisterPageUI;
 
 public class BasePage {
 
@@ -211,7 +210,8 @@ public class BasePage {
 		return select.isMultiple();
 	}
 
-	public void selectItemInCustomDropdown(WebDriver driver, String parentXpathLocator, String childXpathLocator, String textExpectedItem) {
+	public void selectItemInCustomDropdown(WebDriver driver, String parentXpathLocator, String childXpathLocator,
+			String textExpectedItem) {
 
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeOut);
 
@@ -219,7 +219,8 @@ public class BasePage {
 
 		sleepInSecond(1);
 
-		List<WebElement> allItem = explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childXpathLocator)));
+		List<WebElement> allItem = explicitWait
+				.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childXpathLocator)));
 
 		for (WebElement item : allItem) {
 
@@ -347,11 +348,13 @@ public class BasePage {
 
 		String originalStyle = element.getAttribute("style");
 
-		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", "border: 2px solid red; border-style: dashed;");
+		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style",
+				"border: 2px solid red; border-style: dashed;");
 
 		sleepInSecond(1);
 
-		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
+		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style",
+				originalStyle);
 
 	}
 
@@ -375,7 +378,8 @@ public class BasePage {
 
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-		jsExecutor.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", getWebElement(driver, xpathLocator));
+		jsExecutor.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');",
+				getWebElement(driver, xpathLocator));
 
 	}
 
@@ -418,7 +422,8 @@ public class BasePage {
 
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;", getWebElement(driver, xpathLocator));
+		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;",
+				getWebElement(driver, xpathLocator));
 
 	}
 
@@ -426,7 +431,9 @@ public class BasePage {
 
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-		boolean status = (boolean) jsExecutor.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", getWebElement(driver, xpathLocator));
+		boolean status = (boolean) jsExecutor.executeScript(
+				"return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0",
+				getWebElement(driver, xpathLocator));
 
 		if (status) {
 
@@ -471,6 +478,16 @@ public class BasePage {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeOut);
 
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(xpathLocator)));
+	}
+
+	public WebElement getShaDowDOM(WebDriver driver, String xpathLocator) {
+
+		JavascriptExecutor jsExcutor = (JavascriptExecutor) driver;
+
+		WebElement element = (WebElement) jsExcutor.executeScript("return argments [0].shadowRoort;",
+				getWebElement(driver, xpathLocator));
+
+		return element;
 	}
 
 	// Nopcommerce
@@ -521,19 +538,20 @@ public class BasePage {
 		waitForElementClickable(driver, BasePageUI.ORDER_LINK);
 		clickToElement(driver, BasePageUI.ORDER_LINK);
 		return PageGeneratorManager.getUserOrderPageObject(driver);
-		
+
 	}
+
 	public UserCustomerInfoPageObject clickToMyAccountLink(WebDriver driver) {
 		waitForElementClickable(driver, HomePageUI.MY_ACCOUNT_LINK);
 		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
 		return PageGeneratorManager.getUserCustomerPageObject(driver);
 	}
-	
+
 	public UserHomePageObject clickToLogoutLinkAtUser(WebDriver driver) {
 
 		waitForElementClickable(driver, BasePageUI.LOGOUT_LINK_AT_USER);
 
-		clickToElement(driver,BasePageUI.LOGOUT_LINK_AT_USER);
+		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_USER);
 
 		return PageGeneratorManager.getUserHomePage(driver);
 
@@ -580,8 +598,6 @@ public class BasePage {
 		clickToElement(driver, pageUI.liveGuru.BasePageUI.DEPOSIT_LINK);
 		return PageManagerObject.getDepositPageObject(driver);
 	}
-
-
 
 	private long longTimeOut = 30;
 
