@@ -14,7 +14,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
-	private WebDriver driverBaseTest;
+	private WebDriver driver;
 
 	protected WebDriver getBrowserDriver(String browserName) {
 
@@ -22,7 +22,7 @@ public class BaseTest {
 
 			WebDriverManager.firefoxdriver().setup();
 
-			driverBaseTest = new FirefoxDriver();
+			driver = new FirefoxDriver();
 
 		} else if (browserName.equals("h_firefox")) {
 
@@ -34,13 +34,13 @@ public class BaseTest {
 
 			options.addArguments("windows-size=1920x1080");
 
-			driverBaseTest = new FirefoxDriver(options);
+			driver = new FirefoxDriver(options);
 
 		} else if (browserName.equals("chrome")) {
 
 			WebDriverManager.chromedriver().setup();
 
-			driverBaseTest = new ChromeDriver();
+			driver = new ChromeDriver();
 
 		} else if (browserName.equals("h_chrome")) {
 
@@ -52,13 +52,13 @@ public class BaseTest {
 
 			options.addArguments("windows-size=1920x1080");
 
-			driverBaseTest = new ChromeDriver(options);
+			driver = new ChromeDriver(options);
 
 		} else if (browserName.equals("edge")) {
 
 			WebDriverManager.edgedriver().setup();
 
-			driverBaseTest = new EdgeDriver();
+			driver = new EdgeDriver();
 
 		} else if (browserName.equals("coccoc")) {
 
@@ -68,21 +68,23 @@ public class BaseTest {
 
 			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
 
-			driverBaseTest = new ChromeDriver(options);
+			driver = new ChromeDriver(options);
 
 		} else {
 
 			throw new RuntimeException("Browser name invalid");
 		}
 
-		driverBaseTest.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+		driver.manage().window().maximize();
 
-//		driverBaseTest.get("https://demo.nopcommerce.com/");
+		driver.get(GlobalConstants.PORTAL_PAGE_URL);
 
-		driverBaseTest.get("https://demo.guru99.com/");
+//		driverBaseTest.get("https://demo.guru99.com/");
 //		
 //		driverBaseTest.get("http://live.techpanda.org/index.php/");
-		return driverBaseTest;
+		return driver;
 	}
 
 	public int fakeNumber() {

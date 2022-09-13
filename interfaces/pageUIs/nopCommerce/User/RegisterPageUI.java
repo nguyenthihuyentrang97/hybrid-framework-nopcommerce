@@ -1,4 +1,4 @@
-package pageUIs.nopCommer;
+package pageUIs.nopCommerce.User;
 
 public class RegisterPageUI {
 
@@ -26,8 +26,6 @@ public class RegisterPageUI {
 
 	public static final String REGISTER_SUCCESS_MESSAGE = "//div[@class='result']";
 
-	public static final String LOGOUT_LINK = "//a[@class='ico-logout']";
 
-	public static final String EXITING_EMAIL_MESSAGE = "//div[@class='message-error validation-summary-errors']//li"
-			+ "";
+	public static final String EXITING_EMAIL_MESSAGE = "//div[@class='message-error validation-summary-errors']//li";
 }

@@ -1,23 +1,25 @@
-package pageObject.nopCommer;
+package pageObjects.nopCommerceportal.portal;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.nopCommer.RegisterPageUI;
+import commons.PageGeneratorManager;
+import pageUIs.nopCommerce.User.RegisterPageUI;
 
-public class RegisterPageObject extends BasePage {
+public class UserRegisterPageObject extends BasePage {
 
 	private WebDriver driver;
 
-	public RegisterPageObject(WebDriver driver) {
+	public UserRegisterPageObject(WebDriver driver) {
 
 		this.driver = driver;
 	}
 
-	public void clickToRegisterButton() {
+	public UserRegisterPageObject clickToRegisterButton() {
 		waitForElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
 
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
+		return PageGeneratorManager.getUserRegisterPage(driver);
 
 	}
 
@@ -51,31 +53,31 @@ public class RegisterPageObject extends BasePage {
 		return getElementText(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
 	}
 
-	public void inputToFristNameTextBox(String firstName) {
+	public void inputToFristNameTextBox(String userFirstName) {
 		waitForElementVisible(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
 
-		senkeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, firstName);
+		senkeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, userFirstName);
 
 	}
 
-	public void inputToLastNameTextBox(String lastName) {
+	public void inputToLastNameTextBox(String userLastName) {
 		waitForElementVisible(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
 
-		senkeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, lastName);
+		senkeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, userLastName);
 
 	}
 
-	public void inputToEmailTextBox(String email) {
+	public void inputToEmailTextBox(String userEmail) {
 		waitForElementVisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
 
-		senkeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
+		senkeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, userEmail);
 
 	}
 
-	public void inputToPasswordTextBox(String passWord) {
+	public void inputToPasswordTextBox(String userPassWord) {
 		waitForElementVisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
 
-		senkeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, passWord);
+		senkeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, userPassWord);
 
 	}
 
@@ -85,6 +87,15 @@ public class RegisterPageObject extends BasePage {
 		senkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassWord);
 
 	}
+	
+	public UserRegisterPageObject userRegister(String userFirstName, String userLastName, String userEmail, String userPassWord, String confirmPassWord) {
+		inputToFristNameTextBox(userFirstName);
+		inputToLastNameTextBox(userLastName);
+		inputToEmailTextBox(userEmail);
+		inputToPasswordTextBox(userPassWord);
+		inputToConfirmPasswordTextBox(confirmPassWord);
+		return clickToRegisterButton();
+	}
 
 	public String getSuccessMessage() {
 		waitForElementVisible(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
@@ -92,16 +103,9 @@ public class RegisterPageObject extends BasePage {
 		return getElementText(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 
-	public HomePageObject clickToLogoutLink() {
-		waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
-
-		clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
-
-		return PageGeneratorManager.getHomePage(driver);
-
-	}
 
 	public String getErrorMessageExitsEmail() {
+		
 		waitForElementVisible(driver, RegisterPageUI.EXITING_EMAIL_MESSAGE);
 
 		return getElementText(driver, RegisterPageUI.EXITING_EMAIL_MESSAGE);

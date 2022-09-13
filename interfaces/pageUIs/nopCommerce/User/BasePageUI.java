@@ -1,4 +1,4 @@
-package pageUIs.nopCommer;
+package pageUIs.nopCommerce.User;
 
 public class BasePageUI {
 
@@ -17,5 +17,9 @@ public class BasePageUI {
 	public static final String CHANGE_PASSWORD_LINK = "//li[@class='change-password inactive']/a";
 
 	public static final String ORDER_LINK = "//li[@class='customer-orders inactive']/a";
+	
+	public static final String LOGOUT_LINK_AT_USER = "//a[@class='ico-logout']";
+
+	public static final String LOGOUT_LINK_AT_ADMIN = "//a[text()='Logout']";
 
 }
