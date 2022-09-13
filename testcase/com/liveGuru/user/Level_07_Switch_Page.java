@@ -79,7 +79,7 @@ public class Level_07_Switch_Page extends BaseTest {
 
 		password = homePage.getPasswordText();
 
-		driver.get("https://demo.guru99.com/v4/");
+		homePage.openPageUrl(driver, "https://demo.guru99.com/v4/");
 
 		homePage.inputUserIDTextBox(userID);
 
