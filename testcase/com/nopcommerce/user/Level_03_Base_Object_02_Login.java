@@ -12,19 +12,19 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pageObject.nopCommer.HomePageObject;
-import pageObject.nopCommer.LoginPageObject;
-import pageObject.nopCommer.RegisterPageObject;
+import pageFactory.nopCommer.LoginPageObject;
+import pageObjects.nopCommerceportal.portal.UserHomePageObject;
+import pageObjects.nopCommerceportal.portal.UserRegisterPageObject;
 
 public class Level_03_Base_Object_02_Login {
 
 	private WebDriver driver;
 
-	HomePageObject homePage;
+	UserHomePageObject homePage;
 
 	LoginPageObject loginPage;
 
-	RegisterPageObject registerPage;
+	UserRegisterPageObject registerPage;
 
 	String projectPath = System.getProperty("user.dir");
 
@@ -53,13 +53,13 @@ public class Level_03_Base_Object_02_Login {
 
 		driver.get("https://demo.nopcommerce.com");
 
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		System.out.println("Pre-Condition - Step 01: Click Register link");
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 		System.out.println("Pre-Condition - Step 02: Input required fields");
 
@@ -83,9 +83,9 @@ public class Level_03_Base_Object_02_Login {
 
 		System.out.println("Pre-Condition - Step 05: Click Logout button");
 
-		registerPage.clickToLogoutLink();
+		registerPage.clickToLogoutLinkAtUser(driver);
 
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 	}
 
@@ -190,7 +190,7 @@ public class Level_03_Base_Object_02_Login {
 
 		loginPage.clickToLoginButton();
 		
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 		
 		assertTrue(homePage.isMyAccountLinkDisplay());
 		

@@ -11,16 +11,17 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pageObject.nopCommer.HomePageObject;
-import pageObject.nopCommer.RegisterPageObject;
+import pageObjects.nopCommerceportal.portal.UserHomePageObject;
+import pageObjects.nopCommerceportal.portal.UserRegisterPageObject;
+
 
 public class Level_03_Base_Object_01_Register {
 
 	private WebDriver driver;
 
-	private RegisterPageObject registerPage;
+	private UserRegisterPageObject registerPage;
 
-	private HomePageObject homePage;
+	private UserHomePageObject homePage;
 
 	private String projectPath = System.getProperty("user.dir");
 
@@ -40,7 +41,7 @@ public class Level_03_Base_Object_01_Register {
 
 		driver = new FirefoxDriver();
 
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		emailAddress = "abc" + generateFakeNumber() + "@mail.vn";
 
@@ -57,7 +58,7 @@ public class Level_03_Base_Object_01_Register {
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 		System.out.println("Register_01 - Step 02: Click Register button");
 		
@@ -85,7 +86,7 @@ public class Level_03_Base_Object_01_Register {
 
 		homePage.clickToRegisterLink();
 		
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 		
 		System.out.println("Register_02 - Step 02: Input required fields");
 
@@ -117,7 +118,7 @@ public class Level_03_Base_Object_01_Register {
 
 		homePage.clickToRegisterLink();
 		
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 		
 		System.out.println("Register_03 - Step 02: Input required fields");
 
@@ -141,7 +142,7 @@ public class Level_03_Base_Object_01_Register {
 
 		System.out.println("Register_03 - Step 05: Click Logout button");
 
-		registerPage.clickToLogoutLink();
+		registerPage.clickToLogoutLinkAtUser(driver);
 
 	}
 
@@ -153,7 +154,7 @@ public class Level_03_Base_Object_01_Register {
 
 		homePage.clickToRegisterLink();
 		
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 		System.out.println("Register_04 - Step 02: Input required fields");
 
@@ -185,7 +186,7 @@ public class Level_03_Base_Object_01_Register {
 
 		homePage.clickToRegisterLink();
 		
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 		System.out.println("Register_05 - Step 02: Input required fields");
 
@@ -218,7 +219,7 @@ public class Level_03_Base_Object_01_Register {
 
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 		System.out.println("Register_06 - Step 02: Input required fields");
 
