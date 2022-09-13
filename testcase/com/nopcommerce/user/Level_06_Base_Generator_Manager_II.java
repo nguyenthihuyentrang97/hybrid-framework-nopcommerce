@@ -2,25 +2,26 @@ package com.nopcommerce.user;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.nopCommer.HomePageObject;
-import pageObject.nopCommer.LoginPageObject;
-import pageObject.nopCommer.RegisterPageObject;
+import pageObjects.nopCommerceportal.portal.UserHomePageObject;
+import pageObjects.nopCommerceportal.portal.UserLoginPageObject;
+import pageObjects.nopCommerceportal.portal.UserRegisterPageObject;
 
 public class Level_06_Base_Generator_Manager_II  extends BaseTest{
 
 	private WebDriver driver;
 
-	private	HomePageObject homePage;
+	private	UserHomePageObject homePage;
 
-	private	LoginPageObject loginPage;
+	private	UserLoginPageObject loginPage;
 
-	private	RegisterPageObject registerPage;
+	private	UserRegisterPageObject registerPage;
 
 	private	String firstName = "huyen";
 
@@ -39,7 +40,7 @@ public class Level_06_Base_Generator_Manager_II  extends BaseTest{
 
 		driver = getBrowserDriver(browserName);
 
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		System.out.println("Pre-Condition - Step 01: Click Register link");
 
@@ -67,7 +68,7 @@ public class Level_06_Base_Generator_Manager_II  extends BaseTest{
 
 		System.out.println("Pre-Condition - Step 05: Click Logout button");
 
-		homePage = registerPage.clickToLogoutLink();
+		homePage = registerPage.clickToLogoutLinkAtUser(driver);
 
 	}
 

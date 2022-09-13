@@ -10,23 +10,23 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.nopCommer.CustomerInfoPageObject;
-import pageObject.nopCommer.HomePageObject;
-import pageObject.nopCommer.LoginPageObject;
-import pageObject.nopCommer.PageGeneratorManager;
-import pageObject.nopCommer.RegisterPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.nopCommerceportal.portal.UserCustomerInfoPageObject;
+import pageObjects.nopCommerceportal.portal.UserHomePageObject;
+import pageObjects.nopCommerceportal.portal.UserLoginPageObject;
+import pageObjects.nopCommerceportal.portal.UserRegisterPageObject;
 
 public class Level_06_Base_Generator_Manager_III extends BaseTest {
 
 	private WebDriver driver;
 
-	private HomePageObject homePage;
+	private UserHomePageObject homePage;
 
-	private LoginPageObject loginPage;
+	private UserLoginPageObject loginPage;
 
-	private RegisterPageObject registerPage;
+	private UserRegisterPageObject registerPage;
 
-	private CustomerInfoPageObject customerPage;
+	private UserCustomerInfoPageObject customerPage;
 
 	private String firstName = "huyen";
 
@@ -47,7 +47,7 @@ public class Level_06_Base_Generator_Manager_III extends BaseTest {
 
 		driver = getBrowserDriver(browserName);
 
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		System.out.println("Pre-Condition - Step 01: Click Register link");
 
@@ -75,7 +75,7 @@ public class Level_06_Base_Generator_Manager_III extends BaseTest {
 
 		System.out.println("Pre-Condition - Step 05: Click Logout button");
 
-		homePage = registerPage.clickToLogoutLink();
+		homePage = registerPage.clickToLogoutLinkAtUser(driver);
 
 	}
 
@@ -178,7 +178,6 @@ public class Level_06_Base_Generator_Manager_III extends BaseTest {
 
 		assertTrue(homePage.isMyAccountLinkDisplay());
 
-		customerPage = homePage.clickToMyAccountLink();
 
 	}
 
