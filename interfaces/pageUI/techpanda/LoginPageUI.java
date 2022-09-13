@@ -1,4 +1,4 @@
-package pageUI.liveGuru;
+package pageUI.techpanda;
 
 public class LoginPageUI {
 

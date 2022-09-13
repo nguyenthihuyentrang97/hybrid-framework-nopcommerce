@@ -19,8 +19,8 @@ public class PageGeneratorManager {
 		return new RegisterPageObject(driver);
 	}
 
-	public static AddressOject getAddressOject(WebDriver driver) {
-		return new AddressOject(driver);
+	public static AddressPageOject getAddressOject(WebDriver driver) {
+		return new AddressPageOject(driver);
 
 	}
 

@@ -1,9 +1,9 @@
-package pageObject.liveGuru;
+package pageObject.techpanda;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUI.liveGuru.AccountPageUI;
+import pageUI.techpanda.AccountPageUI;
 
 public class AccountPageObject extends BasePage {
 	WebDriver driver;

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NopCommerce">
+	
+	<test name="Run on FireFox">
+	<parameter name = "browser" value = "firefox"/>
+		<classes>
+			<class name="com.techpanda.user.Level_06_Base_Generator_Manager_III" />
+		</classes>
+	</test>
+
+</suite> 

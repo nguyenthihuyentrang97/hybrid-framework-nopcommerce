@@ -1,12 +1,12 @@
-package pageObject.liveGuru;
+package pageObject.techpanda;
 
 import org.openqa.selenium.WebDriver;
 
 public class PageGeneratorManager {
 
-	public static pageObject.liveGuru.HomePageObject getHomePage(WebDriver driver) {
+	public static pageObject.techpanda.HomePageObject getHomePage(WebDriver driver) {
 
-		return new pageObject.liveGuru.HomePageObject(driver);
+		return new pageObject.techpanda.HomePageObject(driver);
 
 	}
 

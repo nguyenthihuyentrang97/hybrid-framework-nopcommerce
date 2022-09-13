@@ -77,8 +77,11 @@ public class BaseTest {
 
 		driverBaseTest.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-		driverBaseTest.get("https://demo.nopcommerce.com/");
+//		driverBaseTest.get("https://demo.nopcommerce.com/");
 
+		driverBaseTest.get("https://demo.guru99.com/");
+//		
+//		driverBaseTest.get("http://live.techpanda.org/index.php/");
 		return driverBaseTest;
 	}
 

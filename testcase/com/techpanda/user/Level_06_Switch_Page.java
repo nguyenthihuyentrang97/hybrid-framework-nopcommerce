@@ -1,4 +1,4 @@
-package com.liveguru.user;
+package com.techpanda.user;
 
 import static org.testng.Assert.assertEquals;
 
@@ -9,13 +9,13 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.liveGuru.AccountPageObject;
-import pageObject.liveGuru.HomePageObject;
-import pageObject.liveGuru.LoginPageObject;
-import pageObject.liveGuru.PageGeneratorManager;
-import pageObject.liveGuru.RegisterPageObject;
+import pageObject.techpanda.AccountPageObject;
+import pageObject.techpanda.HomePageObject;
+import pageObject.techpanda.LoginPageObject;
+import pageObject.techpanda.PageGeneratorManager;
+import pageObject.techpanda.RegisterPageObject;
 
-public class Level_06_Base_Generator_Manager_III extends BaseTest {
+public class Level_06_Switch_Page extends BaseTest {
 
 	private WebDriver driver;
 	private HomePageObject homePage;
@@ -80,6 +80,12 @@ public class Level_06_Base_Generator_Manager_III extends BaseTest {
 
 		assertEquals(accountPage.getTextMyAccount(), "MY ACCOUNT");
 
+	}
+	@Test
+
+	public void User_03_Swicth_Page() {
+		
+		
 	}
 
 	@AfterClass

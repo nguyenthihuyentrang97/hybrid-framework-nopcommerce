@@ -10,7 +10,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.nopCommer.AddressOject;
+import pageObject.nopCommer.AddressPageOject;
 import pageObject.nopCommer.ChangePasswordPageObject;
 import pageObject.nopCommer.CustomerInfoPageObject;
 import pageObject.nopCommer.HomePageObject;
@@ -32,7 +32,7 @@ public class Level_07_Switch_Page extends BaseTest {
 
 	private CustomerInfoPageObject customerInfoPage;
 
-	private AddressOject addressPage;
+	private AddressPageOject addressPage;
 
 	private RewardPointObject rewardPointPage;
 

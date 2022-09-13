@@ -15,7 +15,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import pageObject.nopCommer.AddressOject;
+import pageObject.liveGuru.DepositPageObject;
+import pageObject.liveGuru.ManagerHomePageObject;
+import pageObject.liveGuru.NewAccountPageObject;
+import pageObject.liveGuru.NewCustomerPageObject;
+import pageObject.liveGuru.PageManagerObject;
+import pageObject.liveGuru.WithDrawalPageObject;
+import pageObject.nopCommer.AddressPageOject;
 import pageObject.nopCommer.BackInStockPageObject;
 import pageObject.nopCommer.ChangePasswordPageObject;
 import pageObject.nopCommer.CustomerInfoPageObject;
@@ -472,7 +478,9 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(xpathLocator)));
 	}
 	
-	public AddressOject clickToAddressLink(WebDriver driver) {
+	// Nopcommerce
+	
+	public AddressPageOject clickToAddressLink(WebDriver driver) {
 		waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
 		clickToElement(driver, BasePageUI.ADDRESS_LINK);
 		return PageGeneratorManager.getAddressOject(driver);
@@ -519,6 +527,39 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.ORDER_LINK);
 		return PageGeneratorManager.getOrderPageObject(driver);
 	}
+	
+	// LiveGuru
+	
+	public NewCustomerPageObject openCustomerLink(WebDriver driver) {
+		waitForElementClickable(driver, pageUI.liveGuru.BasePageUI.NEW_CUSTOMER_LINK);
+		clickToElement(driver, pageUI.liveGuru.BasePageUI.NEW_CUSTOMER_LINK);
+		return PageManagerObject.getNewCustomerPageObject(driver);
+	}
+	
+	public ManagerHomePageObject openManagerHomePageLink(WebDriver driver) {
+		waitForElementClickable(driver, pageUI.liveGuru.BasePageUI.MANAGER_LINK);
+		clickToElement(driver, pageUI.liveGuru.BasePageUI.MANAGER_LINK);
+		return PageManagerObject.getManagerHomePageObject(driver);
+	}
+	
+	public WithDrawalPageObject openWithDrawalLink(WebDriver driver) {
+		waitForElementClickable(driver, pageUI.liveGuru.BasePageUI.WITH_DRAWAL_LINK);
+		clickToElement(driver, pageUI.liveGuru.BasePageUI.WITH_DRAWAL_LINK);
+		return PageManagerObject.getWithDrawalPageObject(driver);
+	}
+	
+	public NewAccountPageObject openNewAccountLink(WebDriver driver) {
+		waitForElementClickable(driver, pageUI.liveGuru.BasePageUI.NEW_ACCOUNT_LINK);
+		clickToElement(driver, pageUI.liveGuru.BasePageUI.NEW_ACCOUNT_LINK);
+		return PageManagerObject.getNewAccountPageObject(driver);
+	}
+	public DepositPageObject openDepositPage(WebDriver driver) {
+		waitForElementClickable(driver, pageUI.liveGuru.BasePageUI.DEPOSIT_LINK);
+		clickToElement(driver, pageUI.liveGuru.BasePageUI.DEPOSIT_LINK);
+		return PageManagerObject.getDepositPageObject(driver);
+	}
+	
+	
 	private long longTimeOut = 30;
 
 }

@@ -1,4 +1,4 @@
-package pageUI.liveGuru;
+package pageUI.techpanda;
 
 public class AccountPageUI {
 	public static final String TEXT_REGISTER_SUCCESS = "//li/span";
