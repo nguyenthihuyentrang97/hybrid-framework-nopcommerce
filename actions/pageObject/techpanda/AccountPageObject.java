@@ -16,7 +16,7 @@ public class AccountPageObject extends BasePage {
 	public String getTextRegisterSuccess() {
 		waitForElementVisible(driver, AccountPageUI.TEXT_REGISTER_SUCCESS);
 
-		return getElementText(driver, AccountPageUI.TEXT_REGISTER_SUCCESS);
+		return getTextElement(driver, AccountPageUI.TEXT_REGISTER_SUCCESS);
 	}
 
 	public void clickToAccountButton() {
@@ -35,7 +35,7 @@ public class AccountPageObject extends BasePage {
 
 	public String getTextMyAccount() {
 		waitForElementVisible(driver, AccountPageUI.MY_ACCOUNT_TEXT);
-		return getElementText(driver, AccountPageUI.MY_ACCOUNT_TEXT);
+		return getTextElement(driver, AccountPageUI.MY_ACCOUNT_TEXT);
 	}
 
 }

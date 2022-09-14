@@ -50,15 +50,15 @@ public class Level_02_Apply_Base_Page_III extends BasePage {
 
 		clickToElement(driver, "//button[@id='register-button']");
 
-		assertEquals(getElementText(driver, "//span[@id='FirstName-error']"), "First name is required.");
+		assertEquals(getTextElement(driver, "//span[@id='FirstName-error']"), "First name is required.");
 
-		assertEquals(getElementText(driver, "//span[@id='LastName-error']"), "Last name is required.");
+		assertEquals(getTextElement(driver, "//span[@id='LastName-error']"), "Last name is required.");
 
-		assertEquals(getElementText(driver, "//span[@id='Email-error']"), "Email is required.");
+		assertEquals(getTextElement(driver, "//span[@id='Email-error']"), "Email is required.");
 
-		assertEquals(getElementText(driver, "//span[@id='Password-error']"), "Password is required.");
+		assertEquals(getTextElement(driver, "//span[@id='Password-error']"), "Password is required.");
 
-		assertEquals(getElementText(driver, "//span[@id='ConfirmPassword-error']"), "Password is required.");
+		assertEquals(getTextElement(driver, "//span[@id='ConfirmPassword-error']"), "Password is required.");
 
 	}
 
@@ -84,7 +84,7 @@ public class Level_02_Apply_Base_Page_III extends BasePage {
 
 		clickToElement(driver, "//button[@id='register-button']");
 
-		assertEquals(getElementText(driver, "//span[@id='Email-error']"), "Wrong email");
+		assertEquals(getTextElement(driver, "//span[@id='Email-error']"), "Wrong email");
 
 	}
 
@@ -110,7 +110,7 @@ public class Level_02_Apply_Base_Page_III extends BasePage {
 
 		clickToElement(driver, "//button[@id='register-button']");
 
-		assertEquals(getElementText(driver, "//div[@class='result']"), "Your registration completed");
+		assertEquals(getTextElement(driver, "//div[@class='result']"), "Your registration completed");
 
 		waitForElementClickable(driver, "//a[@class='ico-logout']");
 
@@ -140,7 +140,7 @@ public class Level_02_Apply_Base_Page_III extends BasePage {
 
 		clickToElement(driver, "//button[@id='register-button']");
 
-		assertEquals(getElementText(driver, "//div[@class='message-error validation-summary-errors']//li"),
+		assertEquals(getTextElement(driver, "//div[@class='message-error validation-summary-errors']//li"),
 				"The specified email already exists");
 
 	}
@@ -167,7 +167,7 @@ public class Level_02_Apply_Base_Page_III extends BasePage {
 
 		clickToElement(driver, "//button[@id='register-button']");
 
-		assertEquals(getElementText(driver, "//span[@id='Password-error']"),
+		assertEquals(getTextElement(driver, "//span[@id='Password-error']"),
 				"Password must meet the following rules:\n" + "must have at least 6 characters");
 
 	}
@@ -194,7 +194,7 @@ public class Level_02_Apply_Base_Page_III extends BasePage {
 
 		clickToElement(driver, "//button[@id='register-button']");
 
-		assertEquals(getElementText(driver, "//span[@id='ConfirmPassword-error']"),
+		assertEquals(getTextElement(driver, "//span[@id='ConfirmPassword-error']"),
 				"The password and confirmation password do not match.");
 
 	}

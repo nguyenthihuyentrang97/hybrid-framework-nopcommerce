@@ -26,31 +26,31 @@ public class UserRegisterPageObject extends BasePage {
 	public String getErrorMessageAtFirtNameTextbox() {
 		waitForElementVisible(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
 
-		return getElementText(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
+		return getTextElement(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
 	}
 
 	public String getErrorMessageAtLastNameTextbox() {
 		waitForElementVisible(driver, RegisterPageUI.LAST_NAME_ERROR_MESSAGE);
 
-		return getElementText(driver, RegisterPageUI.LAST_NAME_ERROR_MESSAGE);
+		return getTextElement(driver, RegisterPageUI.LAST_NAME_ERROR_MESSAGE);
 	}
 
 	public String getErrorMessageAtEmailTextbox() {
 		waitForElementVisible(driver, RegisterPageUI.EMAIL_ERROR_MESSAGE);
 
-		return getElementText(driver, RegisterPageUI.EMAIL_ERROR_MESSAGE);
+		return getTextElement(driver, RegisterPageUI.EMAIL_ERROR_MESSAGE);
 	}
 
 	public String getErrorMessageAtPasswordTextbox() {
 		waitForElementVisible(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
 
-		return getElementText(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
+		return getTextElement(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
 	}
 
 	public String getErrorMessageAtConfirmPasswordTextbox() {
 		waitForElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
 
-		return getElementText(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
+		return getTextElement(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
 	}
 
 	public void inputToFristNameTextBox(String userFirstName) {
@@ -100,7 +100,7 @@ public class UserRegisterPageObject extends BasePage {
 	public String getSuccessMessage() {
 		waitForElementVisible(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
 
-		return getElementText(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
+		return getTextElement(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 
 
@@ -108,7 +108,7 @@ public class UserRegisterPageObject extends BasePage {
 		
 		waitForElementVisible(driver, RegisterPageUI.EXITING_EMAIL_MESSAGE);
 
-		return getElementText(driver, RegisterPageUI.EXITING_EMAIL_MESSAGE);
+		return getTextElement(driver, RegisterPageUI.EXITING_EMAIL_MESSAGE);
 	}
 
 }

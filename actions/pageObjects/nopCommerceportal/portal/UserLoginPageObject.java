@@ -28,7 +28,7 @@ public class UserLoginPageObject extends BasePage {
 	public Object getErrorMessageAtEmailTextbox() {
 		waitForElementVisible(driver, LoginPageUI.ERROR_EMAIL_MESSAGE);
 
-		return getElementText(driver, LoginPageUI.ERROR_EMAIL_MESSAGE);
+		return getTextElement(driver, LoginPageUI.ERROR_EMAIL_MESSAGE);
 	}
 
 	public void inputEmailTextBox(String email) {
@@ -48,7 +48,7 @@ public class UserLoginPageObject extends BasePage {
 
 	public String getErrorMessageLogin() {
 		waitForElementVisible(driver, LoginPageUI.ERROR_LOGIN_MESSAGE);
-		return getElementText(driver, LoginPageUI.ERROR_LOGIN_MESSAGE);
+		return getTextElement(driver, LoginPageUI.ERROR_LOGIN_MESSAGE);
 	}
 
 	public UserHomePageObject loginAsUser(String email,String passWord) {

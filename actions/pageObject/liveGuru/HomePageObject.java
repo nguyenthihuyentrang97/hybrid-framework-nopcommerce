@@ -15,13 +15,13 @@ public class HomePageObject extends BasePage {
 	public String getUserText() {
 		
 		waitForElementVisible(driver, HomePageUI.USER_ID_TEXT);
-		return getElementText(driver, HomePageUI.USER_ID_TEXT);
+		return getTextElement(driver, HomePageUI.USER_ID_TEXT);
 		
 	}
 	public String getPasswordText() {
 		waitForElementVisible(driver, HomePageUI.PASSWORD_TEXT);
 		
-		return getElementText(driver, HomePageUI.PASSWORD_TEXT);
+		return getTextElement(driver, HomePageUI.PASSWORD_TEXT);
 		
 	}
 	public void inputUserIDTextBox(String userID) {
