@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.NopCommerce.admin.AdminLoginPageObject;
 import pageObjects.nopCommerceportal.portal.UserAddressPageOject;
 import pageObjects.nopCommerceportal.portal.UserChangePasswordPageObject;
 import pageObjects.nopCommerceportal.portal.UserCustomerInfoPageObject;
@@ -38,9 +37,9 @@ public class Level_09_Dynamic_Locator extends BaseTest {
 	private UserRewardPointObject userRewardPointPage;
 
 	private UserMyProductReviewObject userMyProductReviewPage;
-	
+
 	private UserChangePasswordPageObject userChangePasswordPage;
-	
+
 	private String firstName = "huyen";
 
 	private String lastName = "trang";
@@ -98,7 +97,7 @@ public class Level_09_Dynamic_Locator extends BaseTest {
 	}
 
 	@Test
-	public void User_02_Dynamic_Locator() {
+	public void User_02_Switch_Page() {
 
 		userAddressPage = userCustomerInfoPage.clickToAddressLink(driver);
 		// Customer info -> Address
@@ -117,15 +116,38 @@ public class Level_09_Dynamic_Locator extends BaseTest {
 
 		userMyProductReviewPage = userRewardPointPage.clickToMyProductReviewLink(driver);
 		// Reward point -> My Product review
-		
+
 		userChangePasswordPage = userMyProductReviewPage.clickToChangePasswordLink(driver);
-		
+
 		userMyProductReviewPage = userRewardPointPage.clickToMyProductReviewLink(driver);
-		
+
 		userRewardPointPage = userCustomerInfoPage.clickToRewardPointLink(driver);
-		
+
 	}
 
+	@Test
+	public void User_03_Dynamic_Page_01() {
+
+		userAddressPage = (UserAddressPageOject) userRewardPointPage.openPageAtMyAccountByName(driver, "Addresses");
+		// Reward point -> Address
+
+		userRewardPointPage = (UserRewardPointObject) userAddressPage.openPageAtMyAccountByName(driver,
+				"Reward points");
+		// Address -> Reward point
+
+		userMyProductReviewPage = (UserMyProductReviewObject) userRewardPointPage.openPageAtMyAccountByName(driver,
+				"My product reviews");
+		// Reward point -> My Product review
+
+		userChangePasswordPage = (UserChangePasswordPageObject) userMyProductReviewPage
+				.openPageAtMyAccountByName(driver, "Change password");
+
+		userMyProductReviewPage = (UserMyProductReviewObject) userRewardPointPage.openPageAtMyAccountByName(driver,
+				"My product reviews");
+
+		userRewardPointPage = (UserRewardPointObject) userCustomerInfoPage.openPageAtMyAccountByName(driver,
+				"Reward points");
+	}
 
 	@AfterClass
 

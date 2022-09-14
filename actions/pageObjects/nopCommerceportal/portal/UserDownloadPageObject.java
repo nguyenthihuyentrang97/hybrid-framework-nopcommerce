@@ -2,7 +2,9 @@ package pageObjects.nopCommerceportal.portal;
 
 import org.openqa.selenium.WebDriver;
 
-public class UserDownloadPageObject {
+import commons.BasePage;
+
+public class UserDownloadPageObject extends BasePage {
 
 	WebDriver driver;
 

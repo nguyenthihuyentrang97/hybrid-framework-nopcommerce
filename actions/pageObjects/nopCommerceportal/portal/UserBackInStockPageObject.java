@@ -2,7 +2,9 @@ package pageObjects.nopCommerceportal.portal;
 
 import org.openqa.selenium.WebDriver;
 
-public class UserBackInStockPageObject {
+import commons.BasePage;
+
+public class UserBackInStockPageObject extends BasePage {
 
 	WebDriver driver;
 	public UserBackInStockPageObject(WebDriver driver) {
