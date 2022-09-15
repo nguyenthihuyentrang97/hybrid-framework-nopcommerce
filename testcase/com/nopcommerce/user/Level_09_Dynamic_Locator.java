@@ -131,22 +131,39 @@ public class Level_09_Dynamic_Locator extends BaseTest {
 		userAddressPage = (UserAddressPageOject) userRewardPointPage.openPageAtMyAccountByName(driver, "Addresses");
 		// Reward point -> Address
 
-		userRewardPointPage = (UserRewardPointObject) userAddressPage.openPageAtMyAccountByName(driver,
-				"Reward points");
+		userRewardPointPage = (UserRewardPointObject) userAddressPage.openPageAtMyAccountByName(driver, "Reward points");
 		// Address -> Reward point
 
-		userMyProductReviewPage = (UserMyProductReviewObject) userRewardPointPage.openPageAtMyAccountByName(driver,
-				"My product reviews");
+		userMyProductReviewPage = (UserMyProductReviewObject) userRewardPointPage.openPageAtMyAccountByName(driver, "My product reviews");
 		// Reward point -> My Product review
 
-		userChangePasswordPage = (UserChangePasswordPageObject) userMyProductReviewPage
-				.openPageAtMyAccountByName(driver, "Change password");
+		userChangePasswordPage = (UserChangePasswordPageObject) userMyProductReviewPage.openPageAtMyAccountByName(driver, "Change password");
 
-		userMyProductReviewPage = (UserMyProductReviewObject) userRewardPointPage.openPageAtMyAccountByName(driver,
-				"My product reviews");
+		userMyProductReviewPage = (UserMyProductReviewObject) userRewardPointPage.openPageAtMyAccountByName(driver, "My product reviews");
 
-		userRewardPointPage = (UserRewardPointObject) userCustomerInfoPage.openPageAtMyAccountByName(driver,
-				"Reward points");
+		userRewardPointPage = (UserRewardPointObject) userCustomerInfoPage.openPageAtMyAccountByName(driver, "Reward points");
+	}
+
+	@Test
+	public void User_04_Dynamic_Page_02() {
+		
+		userCustomerInfoPage.openPageAtMyAccountByPageName(driver, "Addresses");
+		userAddressPage = PageGeneratorManager.getUserAddressOject(driver);
+
+		userAddressPage.openPageAtMyAccountByPageName(driver, "My product reviews");
+		userMyProductReviewPage = PageGeneratorManager.getUserMyProductReviewObject(driver);
+		
+		userMyProductReviewPage.openPageAtMyAccountByPageName(driver, "Reward points");
+		userRewardPointPage  = PageGeneratorManager.getUserRewardPointObject(driver);
+
+		userRewardPointPage.openPageAtMyAccountByPageName(driver, "Change password");
+		userChangePasswordPage = PageGeneratorManager.getUserChangePasswordPageObject(driver);
+
+		userChangePasswordPage.openPageAtMyAccountByPageName(driver, "My product reviews");
+		userMyProductReviewPage = PageGeneratorManager.getUserMyProductReviewObject(driver);
+
+		userMyProductReviewPage.openPageAtMyAccountByPageName(driver, "Reward points");
+		userRewardPointPage = PageGeneratorManager.getUserRewardPointObject(driver);
 	}
 
 	@AfterClass

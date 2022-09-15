@@ -757,6 +757,14 @@ public class BasePage {
 		}
 
 	}
+	
+	public void openPageAtMyAccountByPageName(WebDriver driver, String pageName) {
+
+		waitForElementClickableDynamic(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+
+		clickToElementDynamic(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+		
+	}
 
 	// Switch Role
 	public UserHomePageObject clickToLogoutLinkAtUser(WebDriver driver) {
