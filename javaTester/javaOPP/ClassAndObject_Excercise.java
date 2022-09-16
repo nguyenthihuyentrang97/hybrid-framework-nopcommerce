@@ -1,94 +1,72 @@
 package javaOPP;
 
-import java.util.Scanner;
-
 public class ClassAndObject_Excercise {
 
-	static int MaSV;
+	private int MaSV;
 
-	static String HoTen;
+	private String HoTen;
 
-	static float DiemLyThuyet, DiemThucHanh;
+	private float DiemLyThuyet, DiemThucHanh;
 
-	// Khởi tạo giá trị
-	@SuppressWarnings("static-access")
-	public ClassAndObject_Excercise(int MaSV, String HoTen, float DiemLyThuyet, float DiemThucHanh) {
-
-		this.MaSV = MaSV;
-		this.HoTen = HoTen;
-		this.DiemLyThuyet = DiemLyThuyet;
-		this.DiemThucHanh = DiemThucHanh;
-	}
-
-	// Getter / setter
-	protected int getMaSV() {
+	private int getMaSV() {
 		return MaSV;
 	}
 
-	protected void setMaSV(int maSV) {
-		MaSV = maSV;
+	private void setMaSV(int maSV) {
+		this.MaSV = maSV;
 	}
 
-	protected String getHoTen() {
+	private String getHoTen() {
 		return HoTen;
 	}
 
-	protected void setHoTen(String hoTen) {
-		HoTen = hoTen;
+	private void setHoTen(String hoTen) {
+		this.HoTen = hoTen;
 	}
 
-	protected float getDiemLyThuyet() {
+	private float getDiemLyThuyet() {
 		return DiemLyThuyet;
 	}
 
-	protected void setDiemLyThuyet(float diemLyThuyet) {
-		DiemLyThuyet = diemLyThuyet;
+	private void setDiemLyThuyet(float diemLyThuyet) {
+		this.DiemLyThuyet = diemLyThuyet;
 	}
 
-	protected float getDiemThucHanh() {
+	private float getDiemThucHanh() {
 		return DiemThucHanh;
 	}
 
-	protected void setDiemThucHanh(float diemThucHanh) {
-		DiemThucHanh = diemThucHanh;
+	private void setDiemThucHanh(float diemThucHanh) {
+		this.DiemThucHanh = diemThucHanh;
 	}
 
-	public void Diemtrungbinh() {
+	private float Diemtrungbinh() {
 
-		float DiemTrungBinh;
+		return (DiemLyThuyet + DiemThucHanh * 2) / 3;
+	}
 
-		DiemTrungBinh = (DiemLyThuyet + DiemThucHanh * 2) / 3;
+	private void showInfo() {
 
-		System.out.println("Diem trung binh = " + DiemTrungBinh);
+		System.out.println("Nhập MaSV = " + getMaSV());
+
+		System.out.println("Nhập HoTen = " + getHoTen());
+
+		System.out.println("Nhập diemLyThuyet = " + getDiemLyThuyet());
+
+		System.out.println("Nhập diemThucHanh = " + getDiemThucHanh());
+
+		System.out.println("Điểm trung bình = " + Diemtrungbinh());
 	}
 
 	public static void main(String[] args) {
 
-		Scanner sc = new Scanner(System.in);
+		ClassAndObject_Excercise sv1 = new ClassAndObject_Excercise();
+		sv1.setMaSV(1);
+		sv1.setHoTen("A");
+		sv1.setDiemLyThuyet(4);
+		sv1.setDiemThucHanh(7);
+		sv1.showInfo();
 
-		System.out.println("Nhập MaSV = ");
-
-		MaSV = sc.nextInt();
-
-		System.out.println("Nhập HoTen = ");
-
-		HoTen = sc.next();
-
-		System.out.println("Nhập diemLyThuyet = ");
-
-		DiemLyThuyet = sc.nextFloat();
-
-		System.out.println("Nhập diemThucHanh = ");
-
-		DiemThucHanh = sc.nextFloat();
-
-		ClassAndObject_Excercise sv1 = new ClassAndObject_Excercise(1, "Nguyen Van A", 7f, 5.6f);
-
-		sv1.Diemtrungbinh();
-
-		ClassAndObject_Excercise sv2 = new ClassAndObject_Excercise(2, "Nguyen Thi B", 5.5f, 9);
-
-		sv2.Diemtrungbinh();
 
 	}
 
